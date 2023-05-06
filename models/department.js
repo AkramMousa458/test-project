@@ -5,7 +5,6 @@ const department = new Schema({
         type: String,
         required: true,
     },
-
     code: {
         type: String,
         required: false,
