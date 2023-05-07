@@ -361,20 +361,20 @@
                 <ion-icon name="close"></ion-icon>
             </span>
 
-            <div class="form-box login">
+            <div class="form-box login" >
                 <h2>Login</h2>
-                <form action="#">
+                <form action="/home/check" method="post">
                     <div class="input-box">
                         <span class="icon">
                             <ion-icon name="mail"></ion-icon></span>
-                        <input type="email" required>
+                        <input type="email" name="email" required >
                         <label>Email</label>
                     </div>
                     <div class="input-box">
                         <span class="icon">
                             <ion-icon name="lock-closed"></ion-icon>
                         </span>
-                        <input type="password" required>
+                        <input type="password" required id="password">
                         <label>password</label>
                     </div>
                     <div class="radio-group">
@@ -390,7 +390,7 @@
                     </div>
                     <div class="remember-forget">
                         <label><input type="checkbox"> Remember Me</label>
-                        <a href="#">Forget Password</a>
+                        <a href="">Forget Password</a>
                     </div>
                     <div class="btn1">
                         <button type="submit" class="btn">login</button>

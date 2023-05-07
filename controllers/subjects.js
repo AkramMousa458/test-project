@@ -1,5 +1,17 @@
 import subject from "../models/subject.js";
 import department from  "../models/department.js"
+import admin from "../models/admin.js"
+
+export const create_admin = (req, res) => {
+    // const {email, password} = req.page
+    const email = req.body.email
+    console.log(email);
+    res.send("Create Admin")
+    // admin.create({
+    //     email: "akrammousa458@gmail.com",
+    //     password: "akrammousa458",
+    // })
+}
 
 export const index = async (req, res) => {
     res.render('login/index')

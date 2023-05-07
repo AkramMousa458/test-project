@@ -1,7 +1,7 @@
 import express from "express";
-const app = express();
+import bodyParser from  "body-parser"
 
-app.use(express.urlencoded({ extended: true }))
+const app = express();
 
 import { engine } from "express-handlebars";
 
@@ -19,6 +19,8 @@ app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './views');
 
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }));
 
 
 app.use('/home', subjectsRouter)
