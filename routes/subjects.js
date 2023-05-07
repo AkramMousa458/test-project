@@ -1,13 +1,13 @@
 import { Router } from "express";
 const router = new Router();
 
-import { index, create, store, show, create_admin } from "../controllers/subjects.js"
+import { index, create, store, show, check_login, student_page } from "../controllers/subjects.js"
 
-router.get('/create_admin', create_admin)
-
-router.post('/check', create_admin)
+router.post('/check_login', check_login)
 
 router.get('/', index);
+
+router.get('/student', student_page)
 
 router.get('/create', create)
 

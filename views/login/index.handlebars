@@ -363,7 +363,7 @@
 
             <div class="form-box login" >
                 <h2>Login</h2>
-                <form action="/home/check" method="post">
+                <form action="/home/check_login" method="post">
                     <div class="input-box">
                         <span class="icon">
                             <ion-icon name="mail"></ion-icon></span>
@@ -374,17 +374,17 @@
                         <span class="icon">
                             <ion-icon name="lock-closed"></ion-icon>
                         </span>
-                        <input type="password" required id="password">
+                        <input type="password" name="password" required id="password">
                         <label>password</label>
                     </div>
-                    <div class="radio-group">
-                        <label class="radio"><input type="radio" value="Admin" name="checked"> Admin
+                    <div class="radio-group" name="type">
+                        <label class="radio"><input type="radio" value="admin" name="checked"> Admin
                             <span></span>
                         </label>
-                        <label class="radio"><input type="radio" value="Doctor" name="checked"> Doctor
+                        <label class="radio"><input type="radio" value="doctor" name="checked"> Doctor
                             <span></span>
                         </label>
-                        <label class="radio"><input type="radio" value="Student" name="checked"> Student
+                        <label class="radio"><input type="radio" value="student" name="checked"> Student
                             <span></span>
                         </label>
                     </div>

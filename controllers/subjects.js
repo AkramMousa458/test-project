@@ -1,20 +1,43 @@
 import subject from "../models/subject.js";
 import department from  "../models/department.js"
-import admin from "../models/admin.js"
+import admin from "../models/admin.js";
+
+
+export const check_login = async (req, res) => {
+
+    const { email, password } = req.body
+    const type = req.body.checked
+
+    const admins = await admin.findOne({ email: email , password: password});
+
+    if (type == "admin")
+    {
+        if(admins){
+            console.log("Success")
+            res.render('project/index', {layout: false})
+        }else{
+            console.log("Login Failed")
+            res.send("Login Failed")
+        }
+    }else{
+        res.send("Not available yet")
+    }
+    
+}
 
 export const create_admin = (req, res) => {
-    // const {email, password} = req.page
-    const email = req.body.email
-    console.log(email);
-    res.send("Create Admin")
     // admin.create({
     //     email: "akrammousa458@gmail.com",
     //     password: "akrammousa458",
     // })
 }
 
+export const student_page = (req, res) => {
+    res.render("project/adminStudent/student")
+}
+
 export const index = async (req, res) => {
-    res.render('login/index')
+    res.render('login/index', {layout: false})
     // const subjects = await subject.find({}, { name: 1 }).lean();
     // res.render('subjects/all', { subjects: subjects })
 }
