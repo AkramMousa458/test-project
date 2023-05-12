@@ -1,0 +1,161 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Work Sans', sans-serif;
+    background-image: url('../css/imgg.png');
+    background-size: cover;
+
+}
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* small  */
+@media(min-width:768px) {
+    .container {
+        width: 750px;
+    }
+}
+/* meduim */
+@media(min-width:992px) {
+    .container {
+        width: 970px;
+    }
+}
+/* large */
+@media(min-width:1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+.landing-page {
+    min-height: 100vh;
+    background-image: url('./imgg.png');
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    margin-right: 20%;
+
+}
+.landing-page .overley {
+    background-color: #000000b3;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    background-color: #f1f1f1;
+    height: 100vh;
+
+}
+ul img {
+    margin-left: 100px;
+    margin-top: 30px;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 50px 20px 20px;
+
+}
+
+li a.active {
+    background-color: #ffc107;
+    color: white;
+}
+
+li a:hover:not(.active) {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    text-decoration: none;
+}
+.section1 {
+    display: flex;
+    position: relative;
+    z-index: 23232323;
+}
+
+
+/* start table */
+table {
+    border-collapse: collapse;
+    width: 70%;
+    margin: 40px 15px 10px 20px;
+    border: 2px solid #ddd;
+
+}
+.one {
+    background-color: #ddd;
+}
+th,
+td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+    font-size: 18px;
+}
+/* .table th {
+    background-color: #ddd;
+} */
+
+tr:hover {
+    background-color: #ffc107;
+    padding: 0;
+}
+tr {
+    background-color: white;
+}
+.table h1 {
+    color: #ffc107;
+    margin: 10px 15px 10px 20px;
+}
+.pa {
+    background-color: #ddd;
+    font-weight: bold;
+    padding: 0;
+    width: 30%;
+}
+.table2 {
+    margin-left: 50px;
+    margin-top: 80px;
+    /* position: relative; */
+
+}
+.table2 h2 {
+    color: #ffc107;
+    margin-left: 20px;
+
+}
+.mhmd {
+    font-weight: bold;
+    font-size: 18px;
+    margin-left: 35px;
+    margin-top: 10px;
+    /* position: absolute; */
+}

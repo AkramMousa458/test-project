@@ -12,7 +12,8 @@ import mongoose from "mongoose";
 mongoose.connect(process.env.mongoConnectionUrl)
 
 
-import subjectsRouter from "./routes/subjects.js"
+// import subjectsRouter from "./routes/subjects.js"
+import Routers from "./routes/subjects.js"
 
 
 app.engine('handlebars', engine());
@@ -24,7 +25,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
-app.use('/home', subjectsRouter)
+app.use('/home', Routers)
 
 app.listen(process.env.PORT, () =>{
     console.log(`Started app on http://localhost:${process.env.PORT}/home`)

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <!-- start navbar -->
+ 
+<div class="container">
+    <div class="row">
+    <div class="col_2md">
+    <div class="header">
+        <div class="nav">
+               
+            <ul>
+                <a href="index.html"><img src="profile.webp" alt="logo"></a>
+                <li><a><p>Name:</p>
+                <p>Gmail:</p></li></a> 
+                <li><a class="active" href=""> <i class="fa fa-home"></i>Home</a></li>
+                <li><a href="#"> <i class="fa fa-result" ></i>Registration</a></li>
+                <li><a href="#"><i class="fas fa-envelope-open"></i>Courses</a></li>
+                <li><a href="#"><i class="fas fa-lock"></i>Material Pdf</a></li>
+                <li><a href="#">About</a></li>
+              </ul>
+            </div>
+            <div class="files" >
+                <div class="card" id="welcomeDiv"   >
+                   <h3>Upload Files</h3>
+                   <div class="drop_box">
+                     <header>
+                       <h4>Select File here</h4>
+                     </header>
+                     
+                     <input type="file" hidden accept=".doc,.docx,.pdf" id="fileID" style="display:none;">
+                     
+                     <button class="btn" value="Show Div" onclick="showDiv()">Choose File</button>
+                  
+                   </div>
+               
+                 </div>
+
+
+               </div>
+
+                </div>
+            <div class="card" id="welcomeDiv"  style="display:none;" class="answer_list" >
+        <img class="card-img-top" src="machine2.jpg" alt="Card image cap"> 
+       <div class="card-body">
+         <h5 class="card-title">Machine</h5>
+         <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          <form action="doctor2.html">
+       <button onclick="view()" > View Content</button>
+     </form>
+    </div>
+     </div>
+
+    </div>
+
+    
+    </div>
+    </div>
+    <script>
+      
+
+  function showDiv() {
+   document.getElementById('welcomeDiv').style.display = "block";
+
+}
+    </script>
+</body>
+</html>
