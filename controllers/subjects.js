@@ -14,7 +14,8 @@ export const check_login = async (req, res) => {
     {
         if(admins){
             console.log("Success")
-            res.render('project/index', {layout: false})
+            // res.render('project/index', {layout: false})
+            res.render('AdminPages/index', { layout: false })
         }else{
             console.log("Login Failed")
             res.send("Login Failed")
