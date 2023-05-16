@@ -1,9 +1,7 @@
-import subject from "../models/subject.js";
-import department from  "../models/department.js"
 import admin from "../models/admin.js";
 
 
-export const check_login = async (req, res) => {
+export const login = async (req, res) => {
 
     const { email, password } = req.body
     const type = req.body.checked
@@ -14,7 +12,6 @@ export const check_login = async (req, res) => {
     {
         if(admins){
             console.log("Success")
-            // res.render('project/index', {layout: false})
             res.render('AdminPages/index', { layout: false })
         }else{
             console.log("Login Failed")
@@ -26,12 +23,12 @@ export const check_login = async (req, res) => {
     
 }
 
-export const create_admin = (req, res) => {
-    // admin.create({
-    //     email: "akrammousa458@gmail.com",
-    //     password: "akrammousa458",
-    // })
-}
+// export const create_admin = (req, res) => {
+//     // admin.create({
+//     //     email: "akrammousa458@gmail.com",
+//     //     password: "akrammousa458",
+//     // })
+// }
 
 export const student_page = (req, res) => {
     res.render("project/adminStudent/student")
@@ -39,32 +36,30 @@ export const student_page = (req, res) => {
 
 export const index = async (req, res) => {
     res.render('login/index', {layout: false})
-    // const subjects = await subject.find({}, { name: 1 }).lean();
-    // res.render('subjects/all', { subjects: subjects })
 }
 
-export const create = async (req, res) =>{
-    const departments = await department.find().lean();
-    console.log(departments);
-    res.render('subjects/create', { departments })
-}
+// export const create = async (req, res) =>{
+//     const departments = await department.find().lean();
+//     console.log(departments);
+//     res.render('subjects/create', { departments })
+// }
 
-export const store = async (req, res) => {
-    const  {name, code, department} = req.body
-    await subject.create({
-        name: name,
-        code: code,
-        department: department,
-    })
-    res.redirect('/subjects')
-}
+// export const store = async (req, res) => {
+//     const  {name, code, department} = req.body
+//     await subject.create({
+//         name: name,
+//         code: code,
+//         department: department,
+//     })
+//     res.redirect('/subjects')
+// }
 
-export const show = async (req, res) => {
-    const {_id} = req.params
+// export const show = async (req, res) => {
+//     const {_id} = req.params
     
-    const singleSubject = await subject.findById(_id)
-    .populate('department')
-    .lean()
+//     const singleSubject = await subject.findById(_id)
+//     .populate('department')
+//     .lean()
     
-    res.render('subjects/show', { subject: singleSubject})
-}
+//     res.render('subjects/show', { subject: singleSubject})
+// }

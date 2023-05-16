@@ -40,7 +40,7 @@ function randomImg (){
         let setImage = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"];
         backGroundIntrvel = setInterval(()=>{
             let rundomImage = Math.floor(Math.random() * setImage.length);
-            laindingPage.style.backgroundImage =`url(../imgs/${setImage[rundomImage]})`;
+            laindingPage.style.backgroundImage =`url(../../../images/admin/${setImage[rundomImage]})`;
         },4000);
     }
 }

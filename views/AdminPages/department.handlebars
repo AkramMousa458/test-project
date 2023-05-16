@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/student.css">
-    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="../../css/admin/all.min.css">
+    <link rel="stylesheet" href="../../css/admin/student.css">
+    <link rel="stylesheet" href="../../css/admin/normalize.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Open+Sans:wght@300;400;600;700&family=Work+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;1,200;1,500&display=swap" rel="stylesheet">
-    <title>Student</title>
+    <title>Department</title>
 </head>
 <body>
     <!-- start lainding page  -->
@@ -36,12 +36,11 @@
             </div>
             <div class="subject">
                 <div class="container">
-                    <h2>Add an account to the student</h2>
+                    <h2>Add Department</h2>
                     <form action="" id="student-form">
                     <div class="right">
-                        <input type="text" placeholder="User Name" name="userName" >
-                        <input type="number" placeholder="Academic Number" name="academicNumber" >
-                        <input type="password" placeholder="Password" name="Password">
+                        <input type="text" placeholder="Department Name" name="departmentName" >
+                        <input type="number" placeholder="Department Code" name="departmentCode" >
                     </div>
                         <input type="submit" value="Add" class="submit">
                     </form>
@@ -57,9 +56,8 @@
                         <caption>All account Doctors</caption>
                         <thead>
                             <tr>
-                                <td>User Name</td>
-                                <td>Academic Number</td>
-                                <td>Password</td>
+                                <td>Department Name</td>
+                                <td>Department Code</td>
                                 <td>control</td>
                             </tr>
                         </thead>
@@ -67,7 +65,6 @@
                             <tr>
                                 <td>math3</td>
                                 <td>Osama</td>
-                                <td>general</td>
                                 <td>
                                     <span><a href="#" class="edit">Edit</a></span>
                                     <span><a href="#">Delete</a></span>
@@ -76,14 +73,14 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="3">Sum</td>
-                                <td>3</td>
+                                <td colspan="2">Sum</td>
+                                <td>2</td>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
             </div>
      <!-- end Available subject  -->
-     <script src="js/student.js"></script>
+     <script src="../../js/admin/student.js"></script>
 </body>
 </html>

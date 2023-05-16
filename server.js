@@ -12,7 +12,6 @@ import mongoose from "mongoose";
 mongoose.connect(process.env.mongoConnectionUrl)
 
 
-// import subjectsRouter from "./routes/subjects.js"
 import Routers from "./routes/subjects.js"
 
 
@@ -24,7 +23,6 @@ app.set('views', './views');
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// app.use(express.static(__dirname, '/public'));
 app.use(express.static('./public'))
 
 app.use('/home', Routers)
