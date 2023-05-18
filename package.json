@@ -19,5 +19,8 @@
     "express-handlebars": "^7.0.7",
     "mongoose": "^7.1.0",
     "nodemon": "^2.0.22"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.0.1"
   }
 }

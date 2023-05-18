@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,9 +10,12 @@
     <link rel="stylesheet" href="../../css/admin/normalize.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Open+Sans:wght@300;400;600;700&family=Work+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;1,200;1,500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Open+Sans:wght@300;400;600;700&family=Work+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;1,200;1,500&display=swap"
+        rel="stylesheet">
     <title>subject</title>
 </head>
+
 <body>
     <!-- start seting box -->
     <div class="seting-box">
@@ -25,7 +28,7 @@
                     <h4><a href="subject.html" class="link">About Subject</a></h4>
                 </div>
                 <div class="option-box one" data-cont=".adding-subject">
-                    <h4><a href="addingSubject.html" class="link">Add Subject</a></h4>
+                    <h4><a href="/home/addSubject" class="link">Add Subject</a></h4>
                 </div>
             </div>
             <div class="option-box">
@@ -49,11 +52,11 @@
             <div class="header-area">
                 <div class="logo">Academy</div>
                 <ul class="links">
-                    <li><a class="active" href="../index.html">Home</a></li>
-                    <li><a href="subject.html">Subject</a></li>
-                    <li><a href="doctor.html" >Doctor</a></li>
-                    <li><a href="student.html" >Student</a></li>
-                    <li><a href="department.html" >Department</a></li>
+                    <li><a href="/home/home">Home</a></li>
+                    <li><a class="active" href="subject.html">Subject</a></li>
+                    <li><a href="doctor.html">Doctor</a></li>
+                    <li><a href="student.html">Student</a></li>
+                    <li><a href="department.html">Department</a></li>
                 </ul>
                 <button class="menu">
                     <span></span>
@@ -74,25 +77,31 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {{#each subjects}}
                         <tr>
-                            <td>math3</td>
-                            <td>Osama</td>
-                            <td>general</td>
+                            <td>{{name}}</td>
+                            <td>{{doctor}}</td>
+                            <td>{{department}}</td>
                             <td><a href="#">Students</a></td>
                         </tr>
+                        {{/each}}
                     </tbody>
                     <tfoot>
                         <tr>
                             <td colspan="3">Sum</td>
-                            <td>3</td>
+                            <td class="count">{{count}}</td>
                         </tr>
                     </tfoot>
                 </table>
             </div>
+            {{!-- {{#each subjects}}
+            <h3>{{name}}</h3>
+            {{/each}} --}}
         </div>
     </div>
     <!-- end About subject  -->
     <!-- end lainding page  -->
     <script src="../../js/admin/subject.js"></script>
 </body>
+
 </html>

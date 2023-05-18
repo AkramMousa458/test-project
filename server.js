@@ -12,7 +12,7 @@ import mongoose from "mongoose";
 mongoose.connect(process.env.mongoConnectionUrl)
 
 
-import Routers from "./routes/subjects.js"
+import Routers from "./routes/admin.js"
 
 
 app.engine('handlebars', engine());

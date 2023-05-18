@@ -194,7 +194,7 @@ table thead td {
 /* start lainding page  */
 .landing-page {
     min-height: 100vh;
-    background-image: url('../imgs/st2.png');
+    background-image: url("../../../images/admin/st2.png");
     background-size: cover;
     position: relative;
 }

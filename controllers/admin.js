@@ -1,5 +1,7 @@
 import admin from "../models/admin.js";
+import subject from "../models/subject.js";
 
+import { faker } from '@faker-js/faker';
 
 export const login = async (req, res) => {
 
@@ -23,12 +25,38 @@ export const login = async (req, res) => {
     
 }
 
+export const home = async (req, res) => {
+    res.render('AdminPages/index', { layout: false })
+}
+
+export const addSubject = async (req, res) => {
+    const subjects = await subject.find().lean();
+    const count = await subject.find().count();
+    res.render('AdminPages/addingSubject', { layout: false, subjects, count })
+}
+
+
+
+export const subjectPage = async (req, res) => {
+    subject.create({
+        name: "Logic",
+        doctor: "Osama",
+        department: "General",
+        prev_req: ""
+    })
+    const subjects = await subject.find().lean();
+    const count = await subject.find().count();
+    res.render("AdminPages/subject", {layout : false, subjects, count})
+}
+
+
 // export const create_admin = (req, res) => {
 //     // admin.create({
 //     //     email: "akrammousa458@gmail.com",
 //     //     password: "akrammousa458",
 //     // })
 // }
+
 
 export const student_page = (req, res) => {
     res.render("project/adminStudent/student")
