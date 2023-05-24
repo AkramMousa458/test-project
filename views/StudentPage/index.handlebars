@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="./css/information.css">
+    <link rel="stylesheet" href="../../css/Student_Page/all.min.css">
+    <link rel="stylesheet" href="../../css/Student_Page/information.css">
+    <link rel="stylesheet" href="../../css/Student_Page/normalize.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Open+Sans:wght@300;400;600;700&family=Work+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;1,200;1,500&display=swap" rel="stylesheet">
@@ -21,14 +21,14 @@
       <section class="section1" >
         <div class="nav">
             <ul>
-                 <!-- <li><h1>Acadimy</h1></li> -->
-                 <img src="imgs/logo.jpg" width="100ox" > 
-                 <li><a class="active" href="#home"><i class="fa-solid fa-house-laptop"></i> Home</a></li>
+                <!-- <li><h1>Acadimy</h1></li> -->
+                <img src="../../../images/Student_Page/logo.jpg" width="100ox" > 
+                <li><a class="active" href="/home/students"><i class="fa-solid fa-house-laptop"></i> Home</a></li>
                 
-                 <li><a href="./contact/contact.html"><i class="fa-solid fa-id-card"></i> Your Courses</a></li>
-                 <li><a href="./materialtab/materialtab.html"><i class="fa-solid fa-table-cells"></i> Registration</a></li>
-                 <li><a href="#"><i class="fa-solid fa-book-open"></i> GPA</a></li>
-                 <li><a href="#"> <i class="fa-solid fa-users"></i> About Us</a></li>
+                <li><a href="/home/contact"><i class="fa-solid fa-id-card"></i> Your Courses</a></li>
+                <li><a href="/home/material"><i class="fa-solid fa-table-cells"></i> Registration</a></li>
+                <li><a href="#"><i class="fa-solid fa-book-open"></i> GPA</a></li>
+                <li><a href="#"> <i class="fa-solid fa-users"></i> About Us</a></li>
               </ul>
         
         </div>
@@ -42,12 +42,14 @@
                 <th>Gender</th>
               </tr>
               <tr>
-                <td>Peter</td>
-                <td>Griffin</td>
-                <td>$100</td>
-                <td>ffff</td>
+                {{#each students}}
+                <td>{{name}}</td>
+                <td>{{id}}</td>
+                <td>Egyption</td>
+                <td>{{gender}}</td>
+                {{/each}}
               </tr>
-             
+            
             </table>
         
         
@@ -58,37 +60,38 @@
                 <th class="pa">Name</th>
                 <th>Id</th>
               </tr> -->
+              {{#each students}}
               <tr>
                 <td class="pa"> Country</td>
                 <td>Cairo</td>
-               
+              
               </tr>
               <tr>
                 <td class="pa"> Address</td>
-                <td>Egypt,cairo</td>
-               
+                <td>{{address}}</td>
+              
               </tr>
               <tr>
                 <td class="pa"> phone</td>
-                <td>---</td>
+                <td>{{phone}}</td>
           
               </tr>
               <tr>
                 <td class="pa"> Qualification</td>
                 <td>High school</td>
-               
-              </tr>
-              <tr>
-                <td class="pa"> School</td>
-                <td>---</td>
               
               </tr>
               <tr>
-                <td class="pa"> Graduation Year</td>
-                <td>---</td>
+                <td class="pa"> Departement</td>
+                <td>{{departement}}</td>
               
               </tr>
-             
+              <tr>
+                <td class="pa"> Graduation Date</td>
+                <td>{{year}}</td>
+              
+              </tr>
+            {{/each}}
             </table>
             
             </div> 
