@@ -5,10 +5,15 @@ const subject = new Schema({
         type: String,
         required: true,
     },
-
-    doctor: {
+    id: {
         type: String,
-        // required: true,
+        required: true,
+    },
+    
+    doctor: {
+        type: Schema.Types.ObjectId,
+        ref: "doctor",
+        required: true,
     },
 
     department: {

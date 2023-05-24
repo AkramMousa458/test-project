@@ -19,7 +19,7 @@
 
 <body>
     <!-- start seting box -->
-    <div class="seting-box">
+    {{!-- <div class="seting-box">
         <div class="main">
             <i class="fa fa-gear"></i>
         </div>
@@ -44,7 +44,7 @@
             </div>
             <button class="rest-option">Rest Options</button>
         </div>
-    </div>
+    </div> --}}
     <!-- end seting box -->
     <!-- start lainding page  -->
     <div class="landing-page">
@@ -53,8 +53,8 @@
             <div class="header-area">
                 <div class="logo">Academy</div>
                 <ul class="links">
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a class="active" href="subject.html">Subject</a></li>
+                    <li><a href="/home/home">Home</a></li>
+                    <li><a class="active" href="/home/subject">Subject</a></li>
                     <li><a href="doctor.html">Doctor</a></li>
                     <li><a href="student.html">Student</a></li>
                     <li><a href="department.html">Department</a></li>
@@ -70,20 +70,32 @@
                 <div class="subject">
                     <div class="container">
                         <h2>Add an acdemic subject</h2>
-                        <form action="" id="my-form">
-                            <div class="right">
+                        {{!-- id="my-form" --}}
+                        <form action="/home/createSubject" method="POST">
+                            <div class="right"></div>
                                 <input type="text" placeholder="Subject Name" name="subjectName" class="subjectName">
                                 <input type="number" placeholder="Subject Id" name="subjectId" class="subjectId">
-                                <select class="select">
+
+                                <select class="select" name="subjectDoc">
+                                    {{#each doctors}}
+                                    <option value="{{_id}}">{{name}}</option>
+                                    {{/each}}
+                                    <option value="none">None</option>
+                                </select>
+
+                                <select class="select" name="subjectDeb">
+                                    <option value="General">General</option>
                                     <option value="Computer Science">Computer Science</option>
                                     <option value="Information Technology">Information Technology</option>
                                     <option value="Information System">Information System</option>
                                 </select>
-                                <input type="text" placeholder="Previous Requirement" name="previousRequirement"
-                                    class="previousRequirement">
+                                <input type="text" placeholder="Previous Requirement" name="previousRequirement">
+                                {{!-- <button type="submit" class="submit">Add</button> --}}
+                                <input type="submit" value="Add" class="submit">
                             </div>
-                            <input type="submit" value="Add" class="submit">
                         </form>
+                        
+                        
                     </div>
                 </div>
             </div>
@@ -101,7 +113,7 @@
                     <thead>
                         <tr>
                             <td>Subject Name</td>
-                            <td>Subject Doctor</td>
+                            <td>Subject ID</td>
                             <td>Subject Department</td>
                             <td>Previous Requirement</td>
                             <td>control</td>
@@ -111,11 +123,11 @@
                         {{#each subjects}}
                         <tr>
                             <td>{{name}}</td>
-                            <td>{{doctor}}</td>
+                            <td>{{id}}</td>
                             <td>{{department}}</td>
-                            <td><a href="#">Students</a></td>
-                            <td>    
-                                <span><a href="#" class="edit">Edit</a></span>
+                            <td>{{prev_req}}</td>
+                            <td>
+                                <span><a href="/home/addSubject/{{_id}}/edit" class="edit">Edit</a></span>
                                 <span><a href="#">Delete</a></span>
                             </td>
                         </tr>
@@ -123,8 +135,8 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="4">Sum</td>
-                            <td>3</td>
+                            <td colspan="4"  class="table-footer">Sum</td>
+                            <td  class="table-footer">{{count}}</td>
                         </tr>
                     </tfoot>
                 </table>

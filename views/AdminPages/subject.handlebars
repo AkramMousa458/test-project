@@ -18,14 +18,14 @@
 
 <body>
     <!-- start seting box -->
-    <div class="seting-box">
+    {{!-- <div class="seting-box">
         <div class="main">
             <i class="fa fa-gear"></i>
         </div>
         <div class="seting-container">
             <div class="control">
                 <div class="option-box one" data-cont=".about-subject">
-                    <h4><a href="subject.html" class="link">About Subject</a></h4>
+                    <h4><a href="/home/subject" class="link">About Subject</a></h4>
                 </div>
                 <div class="option-box one" data-cont=".adding-subject">
                     <h4><a href="/home/addSubject" class="link">Add Subject</a></h4>
@@ -43,7 +43,7 @@
             </div>
             <button class="rest-option">Rest Options</button>
         </div>
-    </div>
+    </div> --}}
     <!-- end seting box -->
     <!-- start lainding page  -->
     <div class="landing-page">
@@ -53,7 +53,7 @@
                 <div class="logo">Academy</div>
                 <ul class="links">
                     <li><a href="/home/home">Home</a></li>
-                    <li><a class="active" href="subject.html">Subject</a></li>
+                    <li><a class="active" href="/home/subject">Subject</a></li>
                     <li><a href="doctor.html">Doctor</a></li>
                     <li><a href="student.html">Student</a></li>
                     <li><a href="department.html">Department</a></li>
@@ -82,7 +82,7 @@
                             <td>{{name}}</td>
                             <td>{{doctor}}</td>
                             <td>{{department}}</td>
-                            <td><a href="#">Students</a></td>
+                            <td><a href="/home/subject/{{_id}}">Students</a></td>
                         </tr>
                         {{/each}}
                     </tbody>

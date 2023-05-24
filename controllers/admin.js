@@ -1,5 +1,6 @@
 import admin from "../models/admin.js";
 import subject from "../models/subject.js";
+import doctor from "../models/doctor.js";
 
 import { faker } from '@faker-js/faker';
 
@@ -9,7 +10,6 @@ export const login = async (req, res) => {
     const type = req.body.checked
 
     const admins = await admin.findOne({ email: email , password: password});
-
     if (type == "admin")
     {
         if(admins){
@@ -29,25 +29,55 @@ export const home = async (req, res) => {
     res.render('AdminPages/index', { layout: false })
 }
 
-export const addSubject = async (req, res) => {
-    const subjects = await subject.find().lean();
-    const count = await subject.find().count();
-    res.render('AdminPages/addingSubject', { layout: false, subjects, count })
-}
-
 
 
 export const subjectPage = async (req, res) => {
-    subject.create({
-        name: "Logic",
-        doctor: "Osama",
-        department: "General",
-        prev_req: ""
-    })
+    // subject.create({
+    //     name: "Logic",
+    //     doctor: "Osama",
+    //     department: "General",
+    //     prev_req: "Physics"
+    // })
     const subjects = await subject.find().lean();
     const count = await subject.find().count();
-    res.render("AdminPages/subject", {layout : false, subjects, count})
+    const doctors = await doctor.findById(subjects.doctor)
+    // console.log(subjects[0].doctor)
+    res.render("AdminPages/subject", { subjects, count , doctors })
 }
+
+export const editSubject = async (req, res) => {
+    // const subjects = await subject.find().lean();
+    const subjects = await subject.find().lean();
+    const count = await subject.find().count();
+    res.render('AdminPages/editSubject', { subjects, count , layout: false})
+}
+
+
+export const addSubject = async (req, res) => {
+    const subjects = await subject.find().lean();
+    const count = await subject.find().count();
+    const doctors = await doctor.find().lean()
+    res.render('AdminPages/addingSubject', { subjects, count, doctors })
+}
+
+export const createSubject = (req, res) => {
+    const { subjectName, subjectId, subjectDeb, previousRequirement , subjectDoc} = req.body
+    if (subjectName != "" && subjectId != "" && subjectDeb != "" && subjectDoc!= "" && previousRequirement != ""){
+        subject.create({
+            name: subjectName,
+            doctor: subjectDoc,
+            id: subjectId,
+            department: subjectDeb,
+            prev_req: previousRequirement,
+        })
+        res.redirect('/home/addSubject')
+    }
+    else 
+        res.send("Enter Subject Data")
+}
+
+
+
 
 
 // export const create_admin = (req, res) => {
@@ -57,6 +87,13 @@ export const subjectPage = async (req, res) => {
 //     // })
 // }
 
+// export const create_doctor = (req, res) => {
+//     doctor.create({
+//         name: "Hamad",
+//         email: "hamad@gmail.com",
+//         password: "hamad",
+//     })
+// }
 
 export const student_page = (req, res) => {
     res.render("project/adminStudent/student")
