@@ -4,7 +4,7 @@ const subjects_model = new Schema(
   {
     student: {
       ref: "students_dbs",
-      type: String,
+      type: Schema.Types.ObjectId,
       required: true,
     },
     subject_1: {
