@@ -79,7 +79,12 @@ table thead td {
     text-align: center;
     font-weight: bold;
     color: #ffc107;
-    background-color: #7777;
+    background-color: #000000a1
+}
+.table-footer{
+    background-color: #00000085;
+    color: #ffc107;
+    font-weight: bold;
 }
 /* end about-subject  */
 /* start seting box */
@@ -187,7 +192,7 @@ table thead td {
 /* start lainding page  */
 .landing-page {
     min-height: 100vh;
-    background-image: url('../imgs/st2.png');
+    background-image: url(../../images/admin/st2.png);
     background-size: cover;
     position: relative;
 }
@@ -345,11 +350,19 @@ table thead td {
     caret-color: #ffc107;
     width: 100%;
 }
-.subject .container form input[type ="submit"] {
+/* .subject .container form input[type ="submit"] {
     background-color: #ffc107;
     color: white;
     font-weight: bold;
     cursor: pointer;
+} */
+.subject .container form .submit {
+    background-color: #ffc107;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    height: 50px;
+    border-radius: 7px;
 }
 @media(max-width:767px) {
     .subject .container form input {
