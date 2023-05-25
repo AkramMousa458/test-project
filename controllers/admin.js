@@ -2,8 +2,7 @@ import admin from "../models/admin.js";
 import subject from "../models/subject.js";
 import doctor from "../models/doctor.js";
 
-import { faker, tr } from '@faker-js/faker';
-import router from "../routes/admin.js";
+// import router from "../routes/admin.js";
 
 export const login = async (req, res) => {
 
@@ -55,9 +54,9 @@ export const subjectPage = async (req, res) => {
 
 export const doc_page = async(req, res) => 
 {
-
     const docname= await doctor.find().lean();
-    res.render("AdminPages/doctor",{docname })
+    const sum = await doctor.find().count().lean()
+    res.render("AdminPages/doctor",{docname, sum })
 }
 
 export const createdoc=async(req,res)=>
@@ -108,60 +107,6 @@ export const deldoc = async (req, res) => {
     res.redirect('/home/doctor')
 }
 
-export const doc_page = async(req, res) => 
-{
-
-    const docname= await doctor.find().lean();
-    res.render("AdminPages/doctor",{docname })
-}
-
-export const createdoc=async(req,res)=>
-{
-    const {docuserName,docemail,docdoctorId,docPassword}=req.body;
-    if (docuserName != "" && docemail != "" && docdoctorId != "" && docPassword!= ""){
-        doctor.create({
-            name: docuserName,
-            email: docemail,
-            ID: docdoctorId,
-            password: docPassword,
-        })
-        res.redirect('/home/doctor')
-    }
-    else 
-        res.send("Enter Subject Data")
-}
-
-export const showdocid =async(req,res)=>
-{
-    const { _id } =req.params;
-    const singledoc= await doctor.findById(_id).lean();
-    console.log(_id);
-    console.log(singledoc);
-    const {duserName,demail,ddoctorId,docPassword}=req.body
-    res.render('AdminPages/editdoctor',{singledoc,layout:false})
-}
-
-export const updatedoc=async(req,res)=>
-{
-    const { _id } =req.params;
-    const {duserName,demail,ddoctorId,docPassword}=req.body
-    await doctor.findByIdAndUpdate(_id,{ $set :{
-        name : duserName,
-        email : demail,
-        ID : ddoctorId,
-        password : docPassword
-    }})
-    res.redirect('/home/doctor')
-}
-
-
-
-export const deldoc = async (req, res) => {
-    const {id} =req.params;
-    await doctor.findOneAndDelete(id);
-    console.log("del done");
-    res.redirect('/home/doctor')
-}
 
 export const editSubject = async (req, res) => {
     const { _id } = req.params;
@@ -220,25 +165,6 @@ export const createSubject = (req, res) => {
 }
 
 
-// export const create_admin = (req, res) => {
-//     admin.create({
-//         email: "ahmednegm123@gmail.com",
-//         password: "123456789",
-//     })
-// }
-
-// export const create_doctor = (req, res) => {
-//     doctor.create({
-
-//         name: "Hamad",
-//         ID :"1234",
-//         email: "hamad@gmail.com",
-//         password: "hamad",
-//     })
-//     res.send("Enter Subject Data")
-// }
-
-
 export const student_page = (req, res) => {
     res.render("project/adminStudent/student")
 }
@@ -279,26 +205,6 @@ export const createstudent = async (req, res) =>{
 }
     
 
-// export const store = async (req, res) => {
-//     const  {name, code, department} = req.body
-//     await subject.create({
-//         name: name,
-//         code: code,
-//         department: department,
-//     })
-//     res.redirect('/subjects')
-// }
-
-// export const show = async (req, res) => {
-//     const {_id} = req.params
-    
-//     const singleSubject = await subject.findById(_id)
-//     .populate('department')
-//     .lean()
-    
-//     res.render('subjects/show', { subject: singleSubject})
-// }
-///////////////////////////////////////////////////////////
 export const departmentPage = async (req, res) =>{
     const departements = await department.find().lean();
     const count = await department.find().count();
