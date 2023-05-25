@@ -3,11 +3,11 @@ import { Schema, model } from "mongoose";
 const subject = new Schema({
     name: {
         type: String,
-        required: true,
+       required: true,
     },
     id: {
         type: String,
-        required: true,
+       required: true,
     },
     
     doctor: {

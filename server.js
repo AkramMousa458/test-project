@@ -28,6 +28,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('./public'))
 
 app.use('/home', Routers)
+
+// app.use('/login')
  
 
 app.listen(process.env.PORT, () =>{

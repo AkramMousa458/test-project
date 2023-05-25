@@ -2,8 +2,6 @@ import admin from "../models/admin.js";
 import subject from "../models/subject.js";
 import doctor from "../models/doctor.js";
 
-// import { faker } from '@faker-js/faker';
-
 export const login = async (req, res) => {
 
     const { email, password } = req.body
@@ -31,6 +29,11 @@ export const home = async (req, res) => {
         password: "pass",
     })
     res.render('AdminPages/index', { layout: false })
+   // admin.create({
+            // email: "rawan@gmail.com",
+            // password: "pass",
+       
+     //    })
 }
 
 
@@ -121,19 +124,41 @@ export const createSubject = (req, res) => {
 //     })
 // }
 
-export const student_page = (req, res) => {
-    res.render("project/adminStudent/student")
-}
+
 
 export const index = async (req, res) => {
     res.render('login/index', {layout: false})
 }
 
-// export const create = async (req, res) =>{
-//     const departments = await department.find().lean();
-//     console.log(departments);
-//     res.render('subjects/create', { departments })
-// }
+ export const studentPage = async (req, res) =>{
+    const students = await student.find().lean();
+    const count = await student.find().count();
+    
+    res.render('AdminPages/student', {layout: false, students,count})
+   
+}
+export const createstudent = async (req, res) =>{
+    const { userName,Email,academicNumber,Password,Phone,StudentDep} = req.body
+    
+    if (userName != "" && Email != "" && academicNumber != "" && Password!= "" && Phone != "" && StudentDep != ""){
+        student.create({
+            id:academicNumber,
+            name:userName,
+            email:Email,
+            departement:StudentDep,
+            password:Password,
+            phone:Phone
+
+        })
+        console.log(req.body)
+        res.redirect('/home/student')
+       
+    }
+    else 
+        res.send("Enter Subject Data")
+
+}
+    
 
 // export const store = async (req, res) => {
 //     const  {name, code, department} = req.body
@@ -154,3 +179,25 @@ export const index = async (req, res) => {
     
 //     res.render('subjects/show', { subject: singleSubject})
 // }
+///////////////////////////////////////////////////////////
+export const departmentPage = async (req, res) =>{
+    const departements = await department.find().lean();
+    const count = await department.find().count();
+    res.render('AdminPages/department', {layout: false,departements,count})
+   
+}
+export const creatdepartment = async (req, res) =>{
+    const { departmentName,departmentCode} = req.body
+    
+    if (departmentName != "" && departmentCode != "" ){
+        department.create({
+            name:departmentName,
+            id:departmentCode,
+        })
+        console.log(req.body)
+        res.redirect('/home/department')
+    }
+    else 
+        res.send("Enter Subject Data")
+
+}
