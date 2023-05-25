@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from  "body-parser"
 import  methodOverride from "method-override";
+
 const app = express();
 
 import { engine } from "express-handlebars";
@@ -11,6 +12,7 @@ dotenv.config();
 import mongoose from "mongoose";
 mongoose.connect(process.env.mongoConnectionUrl)
 
+app.use(methodOverride('_method'))
 
 import Routers from "./routes/admin.js"
 

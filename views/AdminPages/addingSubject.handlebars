@@ -128,7 +128,7 @@
                             <td>{{prev_req}}</td>
                             <td>
                                 <span><a href="/home/addSubject/{{_id}}/edit" class="edit">Edit</a></span>
-                                <span><a href="#">Delete</a></span>
+                                <span><a href="/home/addSubject/:{{_id}}" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a></span>
                             </td>
                         </tr>
                         {{/each}}

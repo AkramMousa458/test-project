@@ -13,7 +13,7 @@ const subject = new Schema({
     doctor: {
         type: Schema.Types.ObjectId,
         ref: "doctor",
-        required: true,
+        required: false,
     },
 
     department: {
