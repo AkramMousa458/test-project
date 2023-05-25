@@ -3,7 +3,7 @@ import { Schema, model } from "mongoose";
 const departement = new Schema({
     name: {
         type: String,
-       // required: true,
+       required: true,
     },
     id: {
         type: String,
