@@ -55,6 +55,7 @@
                     <li><a href="doctor.html" >Doctor</a></li>
                     <li><a href="student.html" >Student</a></li>
                     <li><a href="department.html" >Department</a></li>
+                    
                 </ul>
                 <button class="menu">
                     <span></span>
@@ -65,11 +66,12 @@
             <div class="subject">
                 <div class="container">
                     <h2>Add an account to the Doctor</h2>
-                    <form action="" id="doctor-form">
+                    <form action="/home/createdoc" method="POST" >
                     <div class="right">
-                        <input type="text" placeholder="User Name" name="userName" class="subjectName">
-                        <input type="number" placeholder="Doctor Id" name="doctorId" class="subjectId">
-                        <input type="password" placeholder="Password" name="Password" class="previousRequirement">
+                        <input type="text" placeholder="User Name" name="docuserName" class="subjectName">
+                        <input type="text" placeholder="email" name="docemail" class="subjectName">
+                        <input type="number" placeholder="Doctor Id" name="docdoctorId" class="subjectId">
+                        <input type="password" placeholder="Password" name="docPassword" class="previousRequirement">
                     </div>
                         <input type="submit" value="Add" class="submit">
                     </form>
@@ -86,26 +88,30 @@
                         <thead>
                             <tr>
                                 <td>User Name</td>
-                                <td>Doctor Id</td>
-                                <td>Password</td>
-                                <td>control</td>
+                                <td>Email</td>
+                                <td>Doctor ID</td>
+                                <td>PassWord</td>
+                                <td>Controler</td>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>math3</td>
-                                <td>Osama</td>
-                                <td>general</td>
-                                <td>
-                                    <span><a href="#" class="edit">Edit</a></span>
-                                    <span><a href="#">Delete</a></span>
-                                </td>
-                            </tr>
+                        {{#each docname}}
+                        <tr>
+                            <td>{{name}}</td>
+                            <td>{{email}}</td>
+                            <td>{{ID}}</td>
+                            <td>{{password}}</td>
+                            <td>
+                                    <span><a href="/home/doctor/{{_id}}" class="edit">Edit</a></span>
+                                    <span><a href="/home/doctor/{{_id}}/del" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a></span>
+                            </td>
+                        </tr>
+                        {{/each}}
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="3">Sum</td>
-                                <td>3</td>
+                                <td colspan="3">sum</td>
+                                <td class="count">{{summ}}</td>
                             </tr>
                         </tfoot>
                     </table>
