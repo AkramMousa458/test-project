@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin-top: 5%;
+        }
+
+        .container {
+            width: 60%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="password"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: #fff;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+
+
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 100%;
+            }
+
+            form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Edit Doctors</h1>
+        <form action='/home/editdoctor/{{singledoc._id}}?_method=PUT' method='POST'>
+            <div class="right"></div>
+                        <input type="text" placeholder="User Name" name="duserName" class="subjectName" value ={{singledoc.name}}>
+                        <input type="text" placeholder="email" name="demail" class="subjectName" value ={{singledoc.email}}>
+                        <input type="number" placeholder="Doctor Id" name="ddoctorId" class="subjectId" value ={{singledoc.ID}}>
+                        <input type="password" placeholder="Password" name="docPassword" class="previousRequirement" value ={{singledoc.password}}>
+                <input type="submit" value="Save" class="submit">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
