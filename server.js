@@ -27,6 +27,11 @@ app.use(express.static('./public'))
 
 app.use('/home', Routers)
 
+
+// app.use('/login')
+ 
+
+
 app.listen(process.env.PORT, () =>{
     console.log(`Started app on http://localhost:${process.env.PORT}/home`)
 })

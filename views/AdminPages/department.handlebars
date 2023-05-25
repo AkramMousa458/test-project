@@ -22,11 +22,11 @@
             <div class="header-area">
                 <div class="logo">Academy</div>
                 <ul class="links">
-                    <li><a class="active" href="../index.html">Home</a></li>
-                    <li><a href="subject.html">Subject</a></li>
-                    <li><a href="doctor.html" >Doctor</a></li>
-                    <li><a href="student.html" >Student</a></li>
-                    <li><a href="department.html" >Department</a></li>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="/home/subject">Subject</a></li>
+                    <li><a href="/home/doctor" >Doctor</a></li>
+                    <li><a href="/home/student" >Student</a></li>
+                    <li><a class="active" href="/home/department" >Department</a></li>
                 </ul>
                 <button class="menu">
                     <span></span>
@@ -37,7 +37,7 @@
             <div class="subject">
                 <div class="container">
                     <h2>Add Department</h2>
-                    <form action="" id="student-form">
+                    <form action="/home/department" method="post">
                     <div class="right">
                         <input type="text" placeholder="Department Name" name="departmentName" >
                         <input type="number" placeholder="Department Code" name="departmentCode" >
@@ -62,19 +62,22 @@
                             </tr>
                         </thead>
                         <tbody>
+                           {{#each departements}}
                             <tr>
-                                <td>math3</td>
-                                <td>Osama</td>
+                                <td>{{name}}</td>
+                                <td>{{id}}</td>
                                 <td>
                                     <span><a href="#" class="edit">Edit</a></span>
                                     <span><a href="#">Delete</a></span>
                                 </td>
                             </tr>
+                            {{/each}}
                         </tbody>
+
                         <tfoot>
                             <tr>
                                 <td colspan="2">Sum</td>
-                                <td>2</td>
+                                <td>{{count}}</td>
                             </tr>
                         </tfoot>
                     </table>
