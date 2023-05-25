@@ -1,33 +1,60 @@
 import admin from "../models/admin.js";
 import subject from "../models/subject.js";
 import doctor from "../models/doctor.js";
+import bcrypt from "bcrypt";
+import  jwt  from "jsonwebtoken";
 
 import { faker } from '@faker-js/faker';
 
 export const login = async (req, res) => {
-
-    const { email, password } = req.body
-    const type = req.body.checked
-
-    const admins = await admin.findOne({ email: email , password: password});
-    if (type == "admin")
-    {
-        if(admins){
-            console.log("Success")
-            res.render('AdminPages/index', { layout: false })
-        }else{
-            console.log("Login Failed")
-            res.send("Login Failed")
+    const { email, password } = req.body;
+    const type = req.body.checked;
+  
+    if (type == "admin") {
+      const admins = await admin.findOne({ email, password });
+      if (admins) {
+        console.log("Success");
+        res.render("AdminPages/index", { layout: false });
+      } else {
+        console.log("Login Failed");
+        res.send("Login Failed");
+      }
+    } else if (type == "doctor") {
+      const Loggeduser = await doctor.findOne({ email });
+      if (Loggeduser) {
+        const iscorrectPassword = bcrypt.compareSync(password, Loggeduser.password);
+        if (iscorrectPassword) {
+          res.render("DoctorPages/doctor", { layout: false });
+  
+          const data = {
+            _id: Loggeduser._id,
+            email: Loggeduser.email,
+          };
+          const JwtTokeen = jwt.sign(data, process.env.JWT_SECRET);
+          console.log(JwtTokeen);
+          res.cookie("Token", JwtTokeen);
+        } else {
+          console.log("Login Failed");
         }
-    }else{
-        res.send("Not available yet")
+      } else {
+        console.log("Login Failed");
+      }
     }
-    
-}
+  };
+
+  export const doctorAndroid = (req , res) => {
+    res.render('DoctorPages/doctorAndroid' , { layout: false });
+  }
+  
 
 export const home = async (req, res) => {
     res.render('AdminPages/index', { layout: false })
 }
+export const logout = (req , res)=> {
+    res.clearCookie('Token');
+    res.redirect('/home')
+    console.log(req.cookies)
+  }
 
 
 
