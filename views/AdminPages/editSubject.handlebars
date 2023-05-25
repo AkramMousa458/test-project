@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Edit Page</title>
@@ -81,23 +82,32 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <h1>Edit Subject</h1>
-        <form action="/home/createSubject" method="POST">
+        <h1>Edit {{singleSubject.name}}</h1>
+        <form action="/home/addSubject/{{singleSubject._id}}?_method=PUT" method="post"> 
             <div class="right"></div>
-                <input type="text" placeholder="Subject Name" name="subjectName" class="subjectName">
-                <input type="number" placeholder="Subject Id" name="subjectId" class="subjectId">
-                <select class="select" name="subjectDeb">
-                    <option value="General">General</option>
-                    <option value="Computer Science">Computer Science</option>
-                    <option value="Information Technology">Information Technology</option>
-                    <option value="Information System">Information System</option>
-                </select>
-                <input type="text" placeholder="Previous Requirement" name="previousRequirement">
-                <input type="submit" value="Save" class="submit">
-            </div>
-        </form>
+            <input type="text" placeholder="Subject Name" name="subjectName" class="subjectName" value={{singleSubject.name}}>
+            <input type="number" placeholder="Subject Id" name="subjectId" class="subjectId" value={{singleSubject.id}}>
+            <select class="select" name="subjectDoc">
+                {{!-- <option value="{{singleSubject.doctor}}">{{singleSubject.doctor.name}}</option> --}}
+                {{#each doctors}}
+                    <option value="{{_id}}">{{name}}</option>
+                {{/each}}
+                <option value="none">None</option>
+            </select>
+            <select class="select" name="subjectDeb">
+                <option value="General">General</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Information System">Information System</option>
+            </select>
+            <input type="text" placeholder="Previous Requirement" name="previousRequirement" value={{singleSubject.prev_req}}>
+            <input type="submit" value="Save" class="submit">
+    </div>
+    </form>
     </div>
 </body>
+
 </html>

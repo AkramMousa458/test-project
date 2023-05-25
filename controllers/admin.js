@@ -2,7 +2,7 @@ import admin from "../models/admin.js";
 import subject from "../models/subject.js";
 import doctor from "../models/doctor.js";
 
-import { faker } from '@faker-js/faker';
+// import { faker } from '@faker-js/faker';
 
 export const login = async (req, res) => {
 
@@ -26,6 +26,10 @@ export const login = async (req, res) => {
 }
 
 export const home = async (req, res) => {
+    admin.create({
+        email: "email",
+        password: "pass",
+    })
     res.render('AdminPages/index', { layout: false })
 }
 
@@ -38,18 +42,42 @@ export const subjectPage = async (req, res) => {
     //     department: "General",
     //     prev_req: "Physics"
     // })
-    const subjects = await subject.find().lean();
+    const {_id} = req.body
+    const subjects = await subject.find().populate('doctor').lean();
     const count = await subject.find().count();
-    const doctors = await doctor.findById(subjects.doctor)
-    // console.log(subjects[0].doctor)
-    res.render("AdminPages/subject", { subjects, count , doctors })
+    res.render("AdminPages/subject", { subjects, count })
 }
 
 export const editSubject = async (req, res) => {
-    // const subjects = await subject.find().lean();
-    const subjects = await subject.find().lean();
-    const count = await subject.find().count();
-    res.render('AdminPages/editSubject', { subjects, count , layout: false})
+    const { _id } = req.params;
+    const singleSubject = await subject.findById(_id).populate('doctor').lean();
+
+    const doctors = await doctor.find().lean()
+    res.render('AdminPages/editSubject', { singleSubject , doctors , layout: false})
+}
+
+export const updateSubject = async (req, res) => {
+    const { _id } = req.params;
+    const { subjectName, subjectId, subjectDeb, previousRequirement , subjectDoc} = req.body
+    
+    console.log(req.body)
+    await subject.findByIdAndUpdate( _id , {
+        $set :{
+            name: subjectName,
+            id: subjectId,
+            doctor: subjectDoc,
+            department: subjectDeb,
+            prev_req: previousRequirement,
+        }
+    })
+    res.redirect('/home/addSubject')
+}
+
+export const deleteSubject = async (req, res) => {
+    const { _id } =req.params;
+    await subject.findOneAndDelete(_id);
+    console.log("del done");
+    res.redirect('/home/addSubject')
 }
 
 
@@ -75,8 +103,6 @@ export const createSubject = (req, res) => {
     else 
         res.send("Enter Subject Data")
 }
-
-
 
 
 
