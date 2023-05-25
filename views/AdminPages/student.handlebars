@@ -24,10 +24,10 @@
                 <div class="logo">Academy</div>
                 <ul class="links">
                     <li><a class="active" href="../index.html">Home</a></li>
-                    <li><a href="subject.html">Subject</a></li>
-                    <li><a href="doctor.html" >Doctor</a></li>
-                    <li><a href="student.html" >Student</a></li>
-                    <li><a href="department.html" >Department</a></li>
+                    <li><a href="/home/subject">Subject</a></li>
+                    <li><a href="/home/doctor" >Doctor</a></li>
+                    <li><a href="/home/student" >Student</a></li>
+                    <li><a href="/home/department" >Department</a></li>
                 </ul>
                 <button class="menu">
                     <span></span>
@@ -38,11 +38,16 @@
             <div class="subject">
                 <div class="container">
                     <h2>Add an account to the student</h2>
-                    <form action="" id="student-form">
+                    <form action="/home/student" method="post">
                     <div class="right">
                         <input type="text" placeholder="User Name" name="userName" >
+                        <input type="email" placeholder="Email" name="Email" >
                         <input type="number" placeholder="Academic Number" name="academicNumber" >
                         <input type="password" placeholder="Password" name="Password">
+                        <input type="number" placeholder="Phone" name="Phone">
+                        <select class="select" name="StudentDep">
+                                <option value="Dep">Dep</option>
+                            </select>
                     </div>
                         <input type="submit" value="Add" class="submit">
                     </form>
@@ -60,25 +65,35 @@
                             <tr>
                                 <td>User Name</td>
                                 <td>Academic Number</td>
-                                <td>Password</td>
+                                <td>Email</td>
+                                <td>department</td>
+                                <td>password</td>
+                                <td>phone</td>
                                 <td>control</td>
+                                
                             </tr>
                         </thead>
                         <tbody>
+                            {{#each students}}
                             <tr>
-                                <td>math3</td>
-                                <td>Osama</td>
-                                <td>general</td>
+                    
+                                <td>{{name}}</td>
+                                <td>{{id}}</td>
+                                <td>{{email}}</td>
+                                <td>{{department}}</td>
+                                <td>{{password}}</td>
+                                <td>{{phone}}</td>
                                 <td>
                                     <span><a href="#" class="edit">Edit</a></span>
                                     <span><a href="#">Delete</a></span>
                                 </td>
                             </tr>
+                            {{/each}}
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="3">Sum</td>
-                                <td>3</td>
+                                <td colspan="6">Sum</td>
+                                <td>{{count}}</td>
                             </tr>
                         </tfoot>
                     </table>
