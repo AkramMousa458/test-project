@@ -23,7 +23,7 @@ export const login = async (req, res) => {
   if (type == "student") {
     if (students) {
       console.log("Success");
-      res.redirect("/home/students");
+      res.redirect("/students/");
     } else {
       console.log("Login Failed");
       res.send("Login Failed");

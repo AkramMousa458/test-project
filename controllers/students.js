@@ -50,5 +50,5 @@ export const add_Student_Subjects = async (req, res) => {
     subject_6: security,
   });
     
-    res.redirect('/home/material')
+    res.redirect("/students/material");
 };
